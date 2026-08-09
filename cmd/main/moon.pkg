@@ -1,5 +1,5 @@
 import {
-  "paletteguard/paletteguard",
+  "Jay7724/paletteguard",
 }
 
 pkgtype(kind: "executable")

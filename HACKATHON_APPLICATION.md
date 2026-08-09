@@ -6,8 +6,8 @@
 - 项目简介：MoonBit 原生调色板无障碍对比度检查库
 - 参赛者：丁健
 - 联系方式：16655175824 / 2676247321@qq.com
-- GitHub 仓库链接：https://github.com/<github-user>/paletteguard
-- Mooncakes 包名：paletteguard/paletteguard
+- GitHub 仓库链接：https://github.com/Jay7724/paletteguard
+- Mooncakes 包名：Jay7724/paletteguard
 - 项目方向：MoonBit 原生开源库、开发工具、CI 质量检查组件
 - 是否为移植项目：否，原创 MoonBit 开源项目
 - 开源许可证：MIT

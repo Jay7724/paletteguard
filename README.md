@@ -23,20 +23,20 @@ adapters.
 The module name in this repository is:
 
 ```text
-paletteguard/paletteguard
+Jay7724/paletteguard
 ```
 
 After publishing under your Mooncakes owner, install it with:
 
 ```bash
-moon add <owner>/paletteguard
+moon add Jay7724/paletteguard
 ```
 
 Use the package from another MoonBit package:
 
 ```moonbit
 import {
-  "<owner>/paletteguard" @paletteguard,
+  "Jay7724/paletteguard" @paletteguard,
 }
 ```
 
@@ -121,11 +121,11 @@ GitHub Actions is configured in `.github/workflows/ci.yml` and runs:
 
 ## Mooncakes
 
-- Package name: `paletteguard/paletteguard`
+- Package name: `Jay7724/paletteguard`
 - Documentation URL after release:
-  `https://mooncakes.io/docs/paletteguard/paletteguard`
+  `https://mooncakes.io/docs/Jay7724/paletteguard`
 - Manifest URL after release:
-  `https://mooncakes.io/api/v0/manifest/paletteguard/paletteguard`
+  `https://mooncakes.io/api/v0/manifest/Jay7724/paletteguard`
 
 Before publishing from a personal or organization account, update the owner
 segment in `moon.mod`, this README, and the repository URL to match the public

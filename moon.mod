@@ -1,10 +1,10 @@
-name = "paletteguard/paletteguard"
+name = "Jay7724/paletteguard"
 
 version = "0.1.0"
 
 readme = "README.md"
 
-repository = "https://github.com/paletteguard/paletteguard.git"
+repository = "https://github.com/Jay7724/paletteguard.git"
 
 license = "MIT"
 

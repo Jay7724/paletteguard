@@ -25,8 +25,8 @@ moon publish
 5. Verify Mooncakes:
 
 ```text
-https://mooncakes.io/docs/<owner>/paletteguard
-https://mooncakes.io/api/v0/manifest/<owner>/paletteguard
+https://mooncakes.io/docs/Jay7724/paletteguard
+https://mooncakes.io/api/v0/manifest/Jay7724/paletteguard
 ```
 
 6. Tag the release:
