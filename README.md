@@ -127,9 +127,9 @@ GitHub Actions is configured in `.github/workflows/ci.yml` and runs:
 - Manifest URL after release:
   `https://mooncakes.io/api/v0/manifest/Jay7724/paletteguard`
 
-Before publishing from a personal or organization account, update the owner
-segment in `moon.mod`, this README, and the repository URL to match the public
-GitHub repository.
+The current repository metadata uses owner `Jay7724`. If the Mooncakes account
+shows a different owner during release, update the owner segment in `moon.mod`,
+this README, and `docs/RELEASE.md` before publishing.
 
 ## License And Third-Party Notes
 

@@ -45,7 +45,7 @@ AA/AAA 对比度策略检查、审计结果分级、修复建议和 Markdown 报
 
 项目已完成 MoonBit 包配置、核心源码、黑盒测试、白盒测试、可运行示例、
 GitHub Actions CI、README、MIT License、API 文档、设计说明、调研记录、
-测试记录、变更日志和 Mooncakes 发布说明。代码仓库本地已有 6 个有效提交，
+测试记录、变更日志和 Mooncakes 发布说明。代码仓库本地已有超过 5 个有效提交，
 开发过程可以通过 Git 记录追踪。
 
 本地已验证命令：
@@ -82,8 +82,10 @@ moon publish --dry-run
 moon publish
 ```
 
-发布前还需要将 `moon.mod` 中的 GitHub 仓库地址和 Mooncakes owner 修改为
-参赛者自己的公开仓库与账号信息。正式发布后，应在报告中补充：
+当前 `moon.mod` 已使用 GitHub 仓库地址 `https://github.com/Jay7724/paletteguard.git`
+和 Mooncakes 包名 `Jay7724/paletteguard`。如果 Mooncakes 登录后显示的 owner
+与 `Jay7724` 不一致，需要先同步修改 `moon.mod`、README 和本文档。正式发布后，
+应在报告中补充：
 
 - GitHub 仓库链接
 - Mooncakes 文档地址
