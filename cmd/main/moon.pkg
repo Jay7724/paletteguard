@@ -1,0 +1,5 @@
+import {
+  "paletteguard/paletteguard",
+}
+
+pkgtype(kind: "executable")
