@@ -2,8 +2,9 @@
 
 PaletteGuard is a MoonBit library for auditing design-system color palettes
 against WCAG contrast thresholds. It parses common color tokens, models palette
-roles, checks foreground/background pairs, and exports a reproducible Markdown
-report that can be used in CI, documentation, or release reviews.
+roles, checks foreground/background pairs, suggests repair candidates, audits
+token documents, and exports reproducible Markdown reports that can be used in
+CI, documentation, or release reviews.
 
 The package targets projects that keep color tokens in code, static assets, or
 documentation and need a small MoonBit-native guard before shipping UI themes.
@@ -15,8 +16,8 @@ Canvas, JavaScript, or external color packages.
 Color regressions are easy to miss when teams change brand colors, terminal
 themes, dashboards, charts, or documentation styles. PaletteGuard gives MoonBit
 projects a reusable contrast engine rather than a one-off script: the same
-core functions can power tests, command examples, and future file-format
-adapters.
+core functions can power tests, command examples, token importers, design-token
+release gates, and future file-format adapters.
 
 ## Installation
 
@@ -50,6 +51,7 @@ let palette = [
 
 let report = @paletteguard.audit_palette(palette, @paletteguard.policy_aa())
 println(report.to_markdown())
+println(@paletteguard.contrast_matrix(palette, @paletteguard.policy_aa()))
 ```
 
 Run the included example:
@@ -92,6 +94,17 @@ publishing again.
 - `audit_palette`: checks all text/accent swatches against background/surface
   swatches.
 - `PaletteReport::to_markdown`: exports a stable Markdown report.
+- `Color::to_hsl`, `Hsl::to_color`, `Color::mix`, `Color::lighten`,
+  `Color::darken`, `Color::rotate_hue`: MoonBit-native color transforms.
+- `repair_foreground` and `repair_background`: search for the nearest contrast
+  repair candidate against a selected policy.
+- `parse_token_document` and `audit_token_document`: parse simple token
+  assignments such as `text.body = #111827` or `surface.panel: white`.
+- `palette_stats`, `audit_ramp`, and `contrast_matrix`: summarize palettes,
+  validate luminance ramps, and export foreground/background matrices.
+- `built_in_catalog`, `catalog_by_family`, `catalog_find`,
+  `catalog_audit_family`: 26 original semantic color families with 338 swatches
+  for examples, tests, and starter palettes.
 
 ## Supported Scope
 
@@ -99,6 +112,12 @@ publishing again.
 - Decimal RGB functions: `rgb(12, 34, 56)`.
 - Named colors: black, white, red, green, blue.
 - WCAG AA and AAA thresholds for normal and large text.
+- HSL conversion, hue rotation, grayscale, channel distance, perceived
+  brightness, and temperature classification.
+- Foreground/background repair search using deterministic black/white and
+  lightness paths.
+- Simple design-token document parsing with per-line diagnostics.
+- Built-in original palette catalog: 26 families, 338 semantic swatches.
 - Markdown report export.
 - Pure MoonBit implementation with no runtime dependencies.
 
@@ -106,8 +125,8 @@ publishing again.
 
 - Alpha blending, gradients, ICC profiles, images, or screenshots.
 - CSS Color Level 4 syntax such as `lab()`, `oklch()`, or percentage RGB.
-- Reading design-token files directly. File adapters are planned as separate
-  boundary packages or future minor versions.
+- Reading files from disk directly. The library parses strings; CLI/file
+  adapters are planned as separate boundary packages or future minor versions.
 
 ## CI
 
@@ -135,4 +154,5 @@ this README, and `docs/RELEASE.md` before publishing.
 
 PaletteGuard is licensed under MIT. The implementation is original MoonBit
 code. It uses the public WCAG contrast formula as a standard, but it does not
-copy third-party source code, images, fonts, audio, or datasets.
+copy third-party source code, images, fonts, audio, or datasets. The built-in
+catalog is original synthetic palette data maintained inside this repository.

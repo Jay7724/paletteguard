@@ -7,5 +7,14 @@
   colors.
 - Added WCAG AA/AAA contrast policy checks.
 - Added role-aware palette audit and Markdown report export.
+- Added HSL conversion, hue rotation, grayscale, color mixing, and brightness
+  profiling.
+- Added deterministic foreground/background repair search for failing contrast
+  pairs.
+- Added line-oriented token document parsing with structured diagnostics.
+- Added palette statistics, ramp audits, contrast matrix export, and combined
+  document audit reports.
+- Added 26 original built-in semantic palette families with 338 swatches for
+  examples, tests, and starter palettes.
 - Added runnable MoonBit example in `cmd/main`.
 - Added tests, CI workflow, design notes, and release checklist.
