@@ -68,12 +68,16 @@ not checked as text foregrounds.
 and contrast auditing in one call.
 
 `audit_ramp(family, swatches)` checks whether a sequence has monotonic
-luminance, reports duplicate hex values, and records the smallest luminance
-gap.
+luminance in either direction, reports duplicate hex values, and records the
+smallest luminance gap. Equal adjacent luminance values do not change the
+direction, but duplicate colors are still reported separately.
 
 `repair_foreground(foreground, background, policy)` and
 `repair_background(foreground, background, policy)` search deterministic
-lighten/darken paths and return a `RepairCandidate`.
+lighten/darken paths in one-percent steps and return the nearest passing
+`RepairCandidate` found among those bounded paths. If the requested threshold
+cannot be reached on either path, the candidate with the strongest available
+contrast is returned.
 
 `readable_foreground(background, policy)` chooses a black or white foreground
 candidate for a background.

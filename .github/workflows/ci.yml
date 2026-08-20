@@ -26,7 +26,7 @@ jobs:
         run: moon fmt --check
 
       - name: Check
-        run: moon check --deny-warn
+        run: moon check --target all --deny-warn
 
       - name: Build
         run: moon build

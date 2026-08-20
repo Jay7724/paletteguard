@@ -36,12 +36,12 @@ PaletteGuard 是使用 MoonBit 实现的调色板无障碍审计库，面向设�
 
 仓库提供 `moon run cmd/main` 可运行示例，输出 Markdown 审计报告、目录摘要
 和对比矩阵。测试覆盖解析、边界值、WCAG 算法、颜色变换、自动修复、token
-诊断、色板目录、色阶审计、矩阵导出和报告导出；当前本地结果为 17 个测试
-全部通过。项目包含 README、API 说明、设计说明、测试记录、变更日志、发布
-流程、验收清单、Issue 记录和第三方许可证说明。
+诊断、色板目录、色阶审计、矩阵导出和报告导出；当前本地结果为 21 个测试
+全部通过。项目包含 README、API 说明、设计说明、测试记录、AI 辅助开发说明、
+变更日志、发布流程、验收清单、Issue 记录和第三方许可证说明。
 
-本地有效 MoonBit 代码共 5,737 行，其中生产代码 5,518 行、测试代码 219
-行。GitHub Actions 会执行 `moon fmt --check`、`moon check --deny-warn`、
+本地有效 MoonBit 代码共 5,836 行，其中生产代码 5,550 行、测试代码 286
+行。GitHub Actions 会执行 `moon fmt --check`、`moon check --target all --deny-warn`、
 `moon build`、`moon test --deny-warn`、`moon package` 和示例运行。
 
 ## 发布状态

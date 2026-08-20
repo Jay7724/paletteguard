@@ -49,6 +49,26 @@ test "reject malformed color input" {
     ) => inspect(true, content="true")
     _ => fail("expected out of range component")
   }
+  match @paletteguard.parse_color("rgb(999999999999999999999999, 0, 0)") {
+    @paletteguard.ColorParseFailed(
+      @paletteguard.ComponentOutOfRange("red", 1000001)
+    ) => inspect(true, content="true")
+    _ => fail("expected large component to be rejected safely")
+  }
+}
+
+///|
+test "policies expose the four WCAG thresholds" {
+  inspect(@paletteguard.minimum_ratio(@paletteguard.policy_aa()), content="4.5")
+  inspect(
+    @paletteguard.minimum_ratio(@paletteguard.policy_large_aa()),
+    content="3",
+  )
+  inspect(@paletteguard.minimum_ratio(@paletteguard.policy_aaa()), content="7")
+  inspect(
+    @paletteguard.minimum_ratio(@paletteguard.policy_large_aaa()),
+    content="4.5",
+  )
 }
 
 ///|
@@ -86,4 +106,27 @@ test "audit palette produces failures and markdown" {
     report.to_markdown().contains("| foreground | background |"),
     content="true",
   )
+}
+
+///|
+test "empty palette remains safe to summarize" {
+  let stats = @paletteguard.palette_stats([])
+  inspect(stats.swatches, content="0")
+  inspect(stats.foregrounds, content="0")
+  inspect(stats.backgrounds, content="0")
+  inspect(stats.average_luminance, content="0")
+  inspect(stats.to_markdown().contains("darkest: n/a"), content="true")
+}
+
+///|
+test "background repair returns a passing candidate" {
+  let ink = @paletteguard.rgb(118, 118, 118).unwrap()
+  let gray = @paletteguard.rgb(150, 150, 150).unwrap()
+  let repaired = @paletteguard.repair_background(
+    ink,
+    gray,
+    @paletteguard.policy_aa(),
+  )
+  inspect(repaired.ratio >= 4.5, content="true")
+  inspect(repaired.strategy.label().contains("background"), content="true")
 }

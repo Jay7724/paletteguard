@@ -11,16 +11,18 @@ authenticated accounts.
 - [x] The root `README.md` explains purpose, scope, installation, API and a
   runnable example.
 - [x] `moon run cmd/main` produces a Markdown audit report and catalog matrix.
-- [x] `moon check --deny-warn` passes.
+- [x] `moon check --target all --deny-warn` passes.
 - [x] `moon build` passes.
-- [x] `moon test --deny-warn` passes: 17 tests passed.
+- [x] `moon test --deny-warn` passes: 21 tests passed.
 - [x] `moon fmt --check` passes.
 - [x] `moon package` produces a local publish archive.
 - [x] GitHub Actions checks format, check, build, test, package and the example.
-- [x] The effective MoonBit source scale is 5,737 lines, including 5,518
-  production lines and 219 test lines.
+- [x] The effective MoonBit source scale is 5,836 lines, including 5,550
+  production lines and 286 test lines.
 - [x] The root `LICENSE` is MIT and third-party/source notes are documented.
 - [x] Design boundaries, test records, changelog and release procedure are
+  included.
+- [x] AI-assisted development, provenance, testability and license notes are
   included.
 - [x] Local history contains more than five meaningful development commits.
 

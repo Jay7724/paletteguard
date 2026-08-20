@@ -16,6 +16,7 @@ moon check --deny-warn
 moon build
 moon test
 moon test --deny-warn
+moon check --target all --deny-warn
 moon run cmd/main
 moon package
 ```
@@ -29,7 +30,9 @@ Coverage intent:
 - core logic: WCAG contrast ratio, grade thresholds, remediation suggestions
 - color analysis: HSL round trip, hue transforms, brightness profile, color
   temperature
-- repair search: deterministic foreground repair for failing contrast pairs
+- repair search: deterministic foreground and background repair for failing
+  contrast pairs, including bounded-candidate selection and unreachable-policy
+  fallback
 - token documents: parsed swatches, ignored lines, warning diagnostics, error
   diagnostics
 - catalog: 26 original families, 338 swatches, lookup, role conversion,
@@ -42,19 +45,19 @@ Coverage intent:
 Latest local result:
 
 ```text
-Total tests: 17, passed: 17, failed: 0.
+Total tests: 21, passed: 21, failed: 0.
 ```
 
 Current effective MoonBit source scale:
 
 ```text
-analysis_engine.mbt        988 effective lines
+analysis_engine.mbt        1012 effective lines
 catalog_generated.mbt     4060 effective lines
-paletteguard.mbt           456 effective lines
+paletteguard.mbt           464 effective lines
 cmd/main/main.mbt           14 effective lines
-tests                       219 effective lines
-total                      5737 effective lines
-production source          5518 effective lines
+tests                       286 effective lines
+total                      5836 effective lines
+production source          5550 effective lines
 ```
 
 `moon package` completed and generated a local publish archive under
@@ -67,4 +70,4 @@ command before final submission.
 
 The GitHub Actions workflow repeats the reproducible checks with the hosted
 MoonBit toolchain and additionally runs `moon fmt --check`, `moon check
---deny-warn`, `moon test --deny-warn`, and `moon package`.
+--target all --deny-warn`, `moon test --deny-warn`, and `moon package`.

@@ -22,6 +22,17 @@ test "foreground repair finds a passing contrast candidate" {
 }
 
 ///|
+test "unreachable AAA repair keeps the strongest available contrast" {
+  let gray = @paletteguard.rgb(128, 128, 128).unwrap()
+  let repaired = @paletteguard.repair_foreground(
+    gray,
+    gray,
+    @paletteguard.policy_aaa(),
+  )
+  inspect(repaired.ratio >= 5.3, content="true")
+}
+
+///|
 test "token document parser keeps swatches and diagnostics separate" {
   let source = "# tokens\ntext.body = #111827\nbackground.canvas: white\naccent.link = rgb(0, 105, 190)\nunknown.foo = #123456\ntext.bad = rgb(300, 0, 0)\n"
   let parsed = @paletteguard.parse_token_document(source)
@@ -91,11 +102,33 @@ test "ramp audit reports monotonicity and duplicates" {
       @paletteguard.rgb(230, 230, 230).unwrap(),
       @paletteguard.RoleSurface,
     ),
+    @paletteguard.swatch(
+      "d",
+      @paletteguard.rgb(240, 240, 240).unwrap(),
+      @paletteguard.RoleSurface,
+    ),
   ]
   let audit = @paletteguard.audit_ramp("neutral", ramp)
   inspect(audit.monotonic_luminance, content="false")
   inspect(audit.duplicate_hexes.length(), content="1")
   inspect(audit.to_markdown().contains("Duplicate colors"), content="true")
+
+  let descending = [
+    @paletteguard.swatch(
+      "light",
+      @paletteguard.rgb(255, 255, 255).unwrap(),
+      @paletteguard.RoleSurface,
+    ),
+    @paletteguard.swatch(
+      "dark",
+      @paletteguard.rgb(40, 40, 40).unwrap(),
+      @paletteguard.RoleSurface,
+    ),
+  ]
+  inspect(
+    @paletteguard.audit_ramp("descending", descending).monotonic_luminance,
+    content="true",
+  )
 }
 
 ///|

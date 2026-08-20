@@ -12,9 +12,11 @@ Mooncakes account is active.
 3. Run local verification:
 
 ```bash
-moon check
+moon version --all
+moon fmt --check
+moon check --deny-warn
 moon build
-moon test
+moon test --deny-warn
 moon run cmd/main
 moon package
 moon publish --dry-run

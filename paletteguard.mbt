@@ -544,13 +544,22 @@ fn parse_decimal(text : String) -> Int? {
   if token.length() == 0 {
     return None
   }
+  let max_safe = 1000000
   let mut value = 0
   for ch in token.iter() {
     let code = ch.to_uint().reinterpret_as_int()
     if code < 48 || code > 57 {
       return None
     }
-    value = value * 10 + code - 48
+    if value > max_safe {
+      return Some(max_safe + 1)
+    }
+    let next = value * 10 + code - 48
+    if next > max_safe {
+      // Preserve normal out-of-range values while bounding untrusted input.
+      return Some(max_safe + 1)
+    }
+    value = next
   }
   Some(value)
 }

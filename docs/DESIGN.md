@@ -46,8 +46,12 @@ attempt subjective brand redesign. Instead they search bounded paths toward
 black, white, lighter backgrounds, or darker backgrounds and return the first
 candidate that satisfies the selected WCAG policy.
 
-This keeps automated CI output explainable: reviewers can see which token was
-adjusted, how far it moved, and the final contrast ratio.
+The search uses one-percent steps on bounded paths. When both directions can
+pass, it prefers the smaller RGB distance; when only one direction passes, it
+prefers that passing candidate; when neither can pass, it keeps the strongest
+available contrast. This keeps automated CI output explainable:
+reviewers can see which token was adjusted, how far it moved, and the final
+contrast ratio.
 
 ## Catalog Strategy
 
@@ -59,6 +63,9 @@ Each catalog family has 13 steps from light canvas tones to strong text tones.
 Roles are assigned by intended semantic use, not by visual color name alone:
 light steps become background/surface roles, middle steps become divider/accent
 roles, and dark steps become text roles.
+
+Ramp audits accept either a nondecreasing or nonincreasing luminance sequence;
+this matches both light-to-dark and dark-to-light token conventions.
 
 ## Maintenance Value
 

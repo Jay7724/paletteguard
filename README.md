@@ -1,5 +1,7 @@
 # PaletteGuard
 
+[![CI](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml/badge.svg)](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml)
+
 PaletteGuard is a MoonBit library for auditing design-system color palettes
 against WCAG contrast thresholds. It parses common color tokens, models palette
 roles, checks foreground/background pairs, suggests repair candidates, audits
@@ -96,8 +98,10 @@ publishing again.
 - `PaletteReport::to_markdown`: exports a stable Markdown report.
 - `Color::to_hsl`, `Hsl::to_color`, `Color::mix`, `Color::lighten`,
   `Color::darken`, `Color::rotate_hue`: MoonBit-native color transforms.
-- `repair_foreground` and `repair_background`: search for the nearest contrast
-  repair candidate against a selected policy.
+- `repair_foreground` and `repair_background`: search bounded deterministic
+  paths and return the nearest passing candidate found for a selected policy;
+  if the policy is unreachable on those paths, return the strongest available
+  candidate.
 - `parse_token_document` and `audit_token_document`: parse simple token
   assignments such as `text.body = #111827` or `surface.panel: white`.
 - `palette_stats`, `audit_ramp`, and `contrast_matrix`: summarize palettes,
@@ -135,7 +139,7 @@ GitHub Actions is configured in `.github/workflows/ci.yml` and runs:
 - MoonBit toolchain installation
 - `moon version --all`
 - `moon fmt --check`
-- `moon check --deny-warn`
+- `moon check --target all --deny-warn`
 - `moon build`
 - `moon test --deny-warn`
 - `moon package`
@@ -146,7 +150,8 @@ evidence for a release review. It only requests read access to repository
 contents and does not publish packages automatically.
 
 Project records are kept in `docs/`: see `API.md`, `DESIGN.md`,
-`TEST_RECORD.md`, `RELEASE.md`, and `ACCEPTANCE_CHECKLIST.md`.
+`TEST_RECORD.md`, `RELEASE.md`, `AI_ASSISTANCE.md`, and
+`ACCEPTANCE_CHECKLIST.md`.
 
 ## Mooncakes
 

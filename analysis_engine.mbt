@@ -479,7 +479,7 @@ pub fn repair_foreground(
     unchecked_color(255, 255, 255),
     RepairLightenForeground,
   )
-  choose_better_candidate(darker, lighter)
+  choose_better_candidate(darker, lighter, required)
 }
 
 ///|
@@ -513,7 +513,7 @@ pub fn repair_background(
     unchecked_color(255, 255, 255),
     RepairLightenBackground,
   )
-  choose_better_candidate(darker, lighter)
+  choose_better_candidate(darker, lighter, required)
 }
 
 ///|
@@ -710,6 +710,7 @@ pub fn DocumentAudit::to_markdown(self : DocumentAudit) -> String {
 pub fn audit_ramp(family : String, swatches : Array[Swatch]) -> RampAudit {
   let duplicates : Array[String] = []
   let mut monotonic = true
+  let mut direction = 0
   let mut previous : Swatch? = None
   let mut smallest_gap = 1.0
   for index, s in swatches {
@@ -722,8 +723,18 @@ pub fn audit_ramp(family : String, swatches : Array[Swatch]) -> RampAudit {
       None => previous = Some(s)
       Some(last) => {
         let gap = s.color.relative_luminance() - last.color.relative_luminance()
-        if gap < 0.0 {
-          monotonic = false
+        if gap > 0.0 {
+          if direction < 0 {
+            monotonic = false
+          } else {
+            direction = 1
+          }
+        } else if gap < 0.0 {
+          if direction > 0 {
+            monotonic = false
+          } else {
+            direction = -1
+          }
         }
         smallest_gap = min_double(smallest_gap, abs_double(gap))
         previous = Some(s)
@@ -1032,12 +1043,25 @@ fn search_background_path(
 fn choose_better_candidate(
   a : RepairCandidate,
   b : RepairCandidate,
+  required : Double,
 ) -> RepairCandidate {
-  if a.ratio >= b.ratio && a.delta <= b.delta {
+  let a_passes = a.ratio >= required
+  let b_passes = b.ratio >= required
+  if a_passes && !b_passes {
     a
-  } else if b.ratio >= a.ratio && b.delta <= a.delta {
+  } else if b_passes && !a_passes {
     b
-  } else if a.ratio >= b.ratio {
+  } else if a_passes {
+    if a.delta <= b.delta {
+      a
+    } else {
+      b
+    }
+  } else if a.ratio > b.ratio {
+    a
+  } else if b.ratio > a.ratio {
+    b
+  } else if a.delta <= b.delta {
     a
   } else {
     b
