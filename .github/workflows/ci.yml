@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   moonbit:
     runs-on: ubuntu-latest
@@ -17,16 +20,22 @@ jobs:
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
       - name: Show MoonBit version
-        run: moon version
+        run: moon version --all
+
+      - name: Format check
+        run: moon fmt --check
 
       - name: Check
-        run: moon check
+        run: moon check --deny-warn
 
       - name: Build
         run: moon build
 
       - name: Test
-        run: moon test
+        run: moon test --deny-warn
+
+      - name: Package
+        run: moon package
 
       - name: Run example
         run: moon run cmd/main

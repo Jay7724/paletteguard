@@ -133,10 +133,20 @@ publishing again.
 GitHub Actions is configured in `.github/workflows/ci.yml` and runs:
 
 - MoonBit toolchain installation
-- `moon check`
+- `moon version --all`
+- `moon fmt --check`
+- `moon check --deny-warn`
 - `moon build`
-- `moon test`
+- `moon test --deny-warn`
+- `moon package`
 - `moon run cmd/main`
+
+The workflow is intentionally warning-strict so that a passing check is useful
+evidence for a release review. It only requests read access to repository
+contents and does not publish packages automatically.
+
+Project records are kept in `docs/`: see `API.md`, `DESIGN.md`,
+`TEST_RECORD.md`, `RELEASE.md`, and `ACCEPTANCE_CHECKLIST.md`.
 
 ## Mooncakes
 

@@ -4,6 +4,7 @@ Toolchain used locally:
 
 ```text
 moon 0.1.20260803
+moonc v0.10.6+62c2592d1 (local verification environment)
 ```
 
 Verified commands:
@@ -63,3 +64,7 @@ production source          5518 effective lines
 before contacting the registry because no Mooncakes credentials were present in
 `MOON_HOME`. Run `moon login` with the release account, then rerun the dry-run
 command before final submission.
+
+The GitHub Actions workflow repeats the reproducible checks with the hosted
+MoonBit toolchain and additionally runs `moon fmt --check`, `moon check
+--deny-warn`, `moon test --deny-warn`, and `moon package`.

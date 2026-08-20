@@ -1,100 +1,53 @@
-# PaletteGuard 项目任务报告书
+# PaletteGuard 项目申报书
 
 ## 基本信息
 
 - 项目名称：PaletteGuard
-- 项目简介：MoonBit 原生调色板无障碍对比度检查库
 - 参赛者：丁健
-- 联系方式：16655175824 / 2676247321@qq.com
-- GitHub 仓库链接：https://github.com/Jay7724/paletteguard
+- 联系方式：在官方报名问卷中填写
+- GitHub：https://github.com/Jay7724/paletteguard
 - Mooncakes 包名：Jay7724/paletteguard
-- 项目方向：MoonBit 原生开源库、开发工具、CI 质量检查组件
-- 是否为移植项目：否，原创 MoonBit 开源项目
+- 项目类型：原创 MoonBit 开源库与 CI 质量检查组件
 - 开源许可证：MIT
 
-## 项目简介
+## 项目基础与目标
 
-PaletteGuard 是一个使用 MoonBit 实现的调色板无障碍审计库，用于检查
-设计系统、文档站、终端主题、图表主题或 WebAssembly 应用中的颜色组合
-是否满足 WCAG 对比度要求。项目提供颜色 token 解析、前景/背景角色建模、
-AA/AAA 对比度策略检查、审计结果分级、修复建议和 Markdown 报告导出能力。
+PaletteGuard 是使用 MoonBit 实现的调色板无障碍审计库，面向设计系统、
+文档站、终端主题、图表主题和 Wasm 应用。它把颜色 token 解析、前景/背景
+角色建模、WCAG 对比度检查、修复建议和 Markdown 报告整合成可复用库，
+解决颜色配置分散、人工 review 容易漏检的问题。
 
-该项目解决的问题是：颜色配置通常分散在设计 token、主题代码或文档中，
-人工 review 容易遗漏低对比度组合。PaletteGuard 将对比度检查沉淀为
-可复用的 MoonBit 库能力，可以被单元测试、CLI 示例、CI 流程和后续
-文件格式适配器共同复用。
+项目不是其他语言项目的移植，核心实现和内置语义色板均为本项目原创。与
+通用颜色转换库相比，PaletteGuard 的边界集中在“角色感知的可读性审计”和
+“可进入 CI 的确定性报告”，便于 MoonBit 项目直接复用和长期维护。
 
-## 适用场景
+## 本次开发内容与技术路线
 
-- MoonBit UI、图表、文档或 Wasm 项目中的主题色验收。
-- 设计系统发布前的颜色 token 对比度检查。
-- README、发布记录、Pull Request 中生成可追踪的 Markdown 审计报告。
-- 作为后续 JSON/TOML/Markdown 设计 token 解析工具的核心算法库。
+本次完成 RGB 颜色模型、`#RGB`/`#RRGGBB`/`rgb(...)`/命名色解析、AA/AAA
+策略、角色化色板审计、HSL 变换、前景/背景修复搜索、行式 token 文档诊断、
+调色板统计、色阶审计、对比矩阵、Markdown 导出和 26 组原创语义色板目录。
 
-## 核心功能
+技术路线是以纯 MoonBit 数据模型承载颜色和审计结果，使用 WCAG 相对亮度
+公式计算对比度，通过确定性的明暗路径搜索修复候选，并把解析错误保留为
+结构化诊断。核心库不读文件、不访问网络，不包含浏览器、图片或 JavaScript
+运行时依赖；JSON/TOML/完整 CSS 适配器留作后续边界包。
 
-- RGB 颜色模型：使用 8 位通道表示颜色，并提供标准十六进制导出。
-- 颜色解析：支持 `#RGB`、`#RRGGBB`、`rgb(r, g, b)` 和常用命名色。
-- 角色建模：区分 text、accent、background、surface、border 等色板角色。
-- WCAG 算法：实现相对亮度和对比度计算，支持 AA/AAA、普通文本/大文本阈值。
-- 审计报告：自动检查前景色与背景色组合，输出 pass/fail、等级和修复建议。
-- 颜色分析：提供 HSL 转换、色相旋转、混色、明暗调整、灰度、亮度和色温画像。
-- 自动修复：对不达标的前景色/背景色提供确定性的最近可读候选色搜索。
-- Token 文档审计：解析 `text.body = #111827` 这类行式 token 文档，并输出结构化诊断。
-- 色阶质量检查：提供调色板统计、对比矩阵、重复色检测和亮度单调性审计。
-- 内置目录：提供 26 组原创语义色阶、338 个 swatch，用作示例、测试和 starter palette。
-- 示例工程：提供 `moon run cmd/main` 可直接运行的示例，展示报告、目录摘要和对比矩阵。
-- 工程保障：提供测试、README、CI、设计说明、测试记录、发布说明和许可证文件。
+## 功能、测试与文档
 
-## 当前完成情况
+仓库提供 `moon run cmd/main` 可运行示例，输出 Markdown 审计报告、目录摘要
+和对比矩阵。测试覆盖解析、边界值、WCAG 算法、颜色变换、自动修复、token
+诊断、色板目录、色阶审计、矩阵导出和报告导出；当前本地结果为 17 个测试
+全部通过。项目包含 README、API 说明、设计说明、测试记录、变更日志、发布
+流程、验收清单、Issue 记录和第三方许可证说明。
 
-项目已完成 MoonBit 包配置、核心源码、黑盒测试、白盒测试、可运行示例、
-GitHub Actions CI、README、MIT License、API 文档、设计说明、调研记录、
-测试记录、变更日志和 Mooncakes 发布说明。代码仓库本地已有超过 5 个有效提交，
-开发过程可以通过 Git 记录追踪。
+本地有效 MoonBit 代码共 5,737 行，其中生产代码 5,518 行、测试代码 219
+行。GitHub Actions 会执行 `moon fmt --check`、`moon check --deny-warn`、
+`moon build`、`moon test --deny-warn`、`moon package` 和示例运行。
 
-本地已验证命令：
+## 发布状态
 
-```bash
-moon check
-moon build
-moon test
-moon run cmd/main
-moon package
-```
-
-测试覆盖了正常输入、错误输入、边界情况、数据结构转换、核心对比度算法、
-颜色变换、自动修复、Token 文档解析、内置目录检索、色阶审计、矩阵导出、
-报告导出和示例运行路径。当前测试结果为：
-
-```text
-Total tests: 17, passed: 17, failed: 0.
-```
-
-## 原创与开源合规说明
-
-PaletteGuard 为原创 MoonBit 实现，不移植第三方项目源码，不包含来源不明
-的图片、音频、字体、私有代码或测试数据。项目使用公开的 WCAG 对比度公式
-作为标准算法依据，代码和文档以 MIT 许可证开源。内置语义色板目录为本
-项目原创合成数据，不复制第三方色板系统。
-
-## 发布状态与后续事项
-
-项目已完成 Mooncakes 发布前配置和本地打包检查。由于正式发布需要参赛者
-自己的 Mooncakes 登录凭据，后续需要由参赛者执行：
-
-```bash
-moon login
-moon publish --dry-run
-moon publish
-```
-
-当前 `moon.mod` 已使用 GitHub 仓库地址 `https://github.com/Jay7724/paletteguard.git`
-和 Mooncakes 包名 `Jay7724/paletteguard`。如果 Mooncakes 登录后显示的 owner
-与 `Jay7724` 不一致，需要先同步修改 `moon.mod`、README 和本文档。正式发布后，
-应在报告中补充：
-
-- GitHub 仓库链接
-- Mooncakes 文档地址
-- Mooncakes manifest 地址
-- CI 通过记录
+本地代码、测试、构建、示例、打包和 CI 配置已准备完成。正式提交前，需在
+正确的 GitHub 账号下推送 `main` 分支，并在 owner 为 `Jay7724` 的 Mooncakes
+账号下执行 `moon publish --dry-run` 和 `moon publish`，随后把公开仓库、CI
+通过记录、Mooncakes 文档页和 manifest 地址补入提交材料。当前未登录或代替
+参赛者执行任何账号操作。
