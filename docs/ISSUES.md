@@ -45,9 +45,7 @@ JavaScript targets in addition to the default verification path.
 
 ## PG-7: Version tag for the published package
 
-Status: local done, remote pending
+Status: done
 
-Outcome: the annotated local tag `v0.1.0` exists and matches the published
-Mooncakes package version. The tag still needs to be pushed to the public
-GitHub repository from the authenticated `Jay7724` account and verified with
-`git ls-remote --tags origin`.
+Outcome: the annotated `v0.1.0` tag and GitHub Release were published from the
+final `d7a073b` commit, matching the published Mooncakes package version.

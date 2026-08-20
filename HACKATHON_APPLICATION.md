@@ -49,6 +49,6 @@ PaletteGuard 是使用 MoonBit 实现的调色板无障碍审计库，面向设�
 
 本地代码、测试、构建、示例、打包和 CI 配置已准备完成。`Jay7724/paletteguard`
 版本 `0.1.0` 已发布至 Mooncakes，文档页和 manifest 均已返回 HTTP 200。公开
-`main` 分支已推送，最新 GitHub Actions 已成功通过。提交前还需在当前
-`Jay7724` 账号下推送并核验 `v0.1.0` 远程标签，再将公开仓库、CI 记录、
-Mooncakes 文档页、manifest 地址和本申报书一并提交到比赛问卷。
+`main` 分支已推送，最新 GitHub Actions 已成功通过，GitHub Release
+`v0.1.0` 已创建并指向最终提交。现在可将公开仓库、CI 记录、GitHub
+Release、Mooncakes 文档页、manifest 地址和本申报书一并提交到比赛问卷。

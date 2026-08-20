@@ -59,7 +59,7 @@ record:
 - the exact version and tag submitted to the hackathon form.
 
 Version `0.1.0` was published under owner `Jay7724` and verified through the
-Mooncakes documentation and manifest endpoints. The public default branch and
-its successful GitHub Actions run are recorded. The remaining release evidence
-is the remote `v0.1.0` tag, followed by the official form submission; the run
+Mooncakes documentation and manifest endpoints. The public default branch,
+successful GitHub Actions run, remote `v0.1.0` tag, and GitHub Release are all
+recorded. The remaining action is the official form submission; the run
 history is linked from the repository README and Actions tab.

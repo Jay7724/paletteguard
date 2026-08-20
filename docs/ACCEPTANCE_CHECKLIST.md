@@ -39,10 +39,9 @@ authenticated accounts.
   returned server status 200.
 - [x] Open the Mooncakes documentation and manifest URLs; both returned HTTP
   200 for the published version.
-- [ ] Push the local annotated tag `v0.1.0` to the public GitHub repository
-  while the intended `Jay7724` account is active.
-- [ ] Verify the remote tag with `git ls-remote --tags origin` or the GitHub
-  Tags page.
+- [x] Push the annotated tag `v0.1.0` to the public GitHub repository while
+  the intended `Jay7724` account is active.
+- [x] Verify the published GitHub Release and remote tag point to `d7a073b`.
 - [ ] Submit the public GitHub URL and the one-page Markdown application
   document through the official August Hackathon form.
 
