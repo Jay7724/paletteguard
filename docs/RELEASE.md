@@ -55,5 +55,5 @@ record:
 
 Version `0.1.0` was published under owner `Jay7724` and verified through the
 Mooncakes documentation and manifest endpoints. The remaining submission
-evidence is recorded by GitHub commit `6b4b9ca` and the successful CI run at
-`https://github.com/Jay7724/paletteguard/actions/runs/32352218973`.
+evidence is the public default branch and its successful GitHub Actions run;
+the run history is linked from the repository README and Actions tab.

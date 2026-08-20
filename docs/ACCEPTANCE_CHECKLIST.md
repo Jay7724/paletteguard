@@ -30,9 +30,9 @@ authenticated accounts.
 
 - [x] Push the local `main` branch to the public GitHub repository while the
   intended `Jay7724` account is active.
-- [x] Confirm the remote default branch shows commit `6b4b9ca`.
-- [x] Record the successful GitHub Actions run:
-  `https://github.com/Jay7724/paletteguard/actions/runs/32352218973`.
+- [x] Confirm the remote default branch contains the latest local release
+  commit.
+- [x] Record a successful GitHub Actions run for the public default branch.
 - [x] Log in to Mooncakes as the owner `Jay7724`.
 - [x] Run `moon publish --dry-run`, then `moon publish`; version `0.1.0`
   returned server status 200.
