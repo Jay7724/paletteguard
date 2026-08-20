@@ -71,3 +71,6 @@ returned HTTP 200.
 The GitHub Actions workflow repeats the reproducible checks with the hosted
 MoonBit toolchain and additionally runs `moon fmt --check`, `moon check
 --target all --deny-warn`, `moon test --deny-warn`, and `moon package`.
+
+The public CI run for commit `6b4b9ca` completed successfully:
+`https://github.com/Jay7724/paletteguard/actions/runs/32352218973`.
