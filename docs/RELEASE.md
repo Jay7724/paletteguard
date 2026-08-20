@@ -40,8 +40,13 @@ https://mooncakes.io/api/v0/manifest/Jay7724/paletteguard
 
 ```bash
 git tag v0.1.0
-git push origin main --tags
+git push origin v0.1.0
+git ls-remote --tags origin refs/tags/v0.1.0
 ```
+
+GitHub Desktop users can create the tag from the latest `main` commit and
+select `Push origin`. Before pushing, confirm that the repository is
+`Jay7724/paletteguard` and that the active account is `Jay7724`.
 
 ## Evidence after release
 
@@ -54,6 +59,7 @@ record:
 - the exact version and tag submitted to the hackathon form.
 
 Version `0.1.0` was published under owner `Jay7724` and verified through the
-Mooncakes documentation and manifest endpoints. The remaining submission
-evidence is the public default branch and its successful GitHub Actions run;
-the run history is linked from the repository README and Actions tab.
+Mooncakes documentation and manifest endpoints. The public default branch and
+its successful GitHub Actions run are recorded. The remaining release evidence
+is the remote `v0.1.0` tag, followed by the official form submission; the run
+history is linked from the repository README and Actions tab.

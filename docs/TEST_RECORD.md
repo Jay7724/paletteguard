@@ -3,8 +3,8 @@
 Toolchain used locally:
 
 ```text
-moon 0.1.20260803
-moonc v0.10.6+62c2592d1 (local verification environment)
+moon 0.1.20260819
+moonc v0.10.9+6e6c44045 (local verification environment)
 ```
 
 Verified commands:
@@ -75,3 +75,6 @@ MoonBit toolchain and additionally runs `moon fmt --check`, `moon check
 
 The public CI run for commit `6b4b9ca` completed successfully:
 `https://github.com/Jay7724/paletteguard/actions/runs/32352218973`.
+
+The latest public CI run for commit `267fee7` also completed successfully:
+`https://github.com/Jay7724/paletteguard/actions/runs/32354564005`.

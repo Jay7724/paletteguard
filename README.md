@@ -1,6 +1,6 @@
 # PaletteGuard
 
-[![CI](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml/badge.svg)](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml)
+[![CI](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Jay7724/paletteguard/actions/workflows/ci.yml)
 
 PaletteGuard is a MoonBit library for auditing design-system color palettes
 against WCAG contrast thresholds. It parses common color tokens, models palette
