@@ -32,12 +32,13 @@ authenticated accounts.
   intended `Jay7724` account is active.
 - [ ] Confirm the remote default branch shows the latest local release commit.
 - [ ] Wait for and record a successful GitHub Actions run on that commit.
-- [ ] Log in to Mooncakes as the owner `Jay7724`.
-- [ ] Run `moon publish --dry-run`, then `moon publish`.
-- [ ] Open the Mooncakes documentation and manifest URLs and record the
-  published version.
+- [x] Log in to Mooncakes as the owner `Jay7724`.
+- [x] Run `moon publish --dry-run`, then `moon publish`; version `0.1.0`
+  returned server status 200.
+- [x] Open the Mooncakes documentation and manifest URLs; both returned HTTP
+  200 for the published version.
 - [ ] Submit the public GitHub URL and the one-page Markdown application
   document through the official August Hackathon form.
 
-Until the push and `moon publish` steps succeed, the project is locally ready
-but should not be described as fully accepted or already published.
+Until the GitHub push and its CI run succeed, the project should not be
+described as fully submitted or fully accepted.

@@ -156,6 +156,7 @@ Project records are kept in `docs/`: see `API.md`, `DESIGN.md`,
 ## Mooncakes
 
 - Package name: `Jay7724/paletteguard`
+- Published version: `0.1.0`
 - Documentation URL after release:
   `https://mooncakes.io/docs/Jay7724/paletteguard`
 - Manifest URL after release:

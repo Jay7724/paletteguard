@@ -63,10 +63,10 @@ production source          5550 effective lines
 `moon package` completed and generated a local publish archive under
 `_build/publish`.
 
-`moon publish --dry-run` was attempted locally. The MoonBit toolchain stopped
-before contacting the registry because no Mooncakes credentials were present in
-`MOON_HOME`. Run `moon login` with the release account, then rerun the dry-run
-command before final submission.
+`moon publish --dry-run` completed successfully for
+`Jay7724/paletteguard` version `0.1.0`, and `moon publish` returned server
+status `200 OK`. The published documentation and manifest endpoints both
+returned HTTP 200.
 
 The GitHub Actions workflow repeats the reproducible checks with the hosted
 MoonBit toolchain and additionally runs `moon fmt --check`, `moon check

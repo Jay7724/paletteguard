@@ -53,6 +53,6 @@ record:
 - the Mooncakes documentation page and manifest page;
 - the exact version and tag submitted to the hackathon form.
 
-The current local package is prepared for publishing, but it is not evidence
-of a completed Mooncakes release until `moon publish` succeeds under the
-correct owner account.
+Version `0.1.0` was published under owner `Jay7724` and verified through the
+Mooncakes documentation and manifest endpoints. The remaining submission
+evidence is the latest GitHub commit and its successful CI run.
