@@ -19,6 +19,11 @@ jobs:
           curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
           echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
 
+      - name: Set up Node.js for JavaScript target tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       - name: Show MoonBit version
         run: moon version --all
 
@@ -33,6 +38,12 @@ jobs:
 
       - name: Test
         run: moon test --deny-warn
+
+      - name: Cross-target tests
+        run: |
+          moon test --target wasm --deny-warn
+          moon test --target wasm-gc --deny-warn
+          moon test --target js --deny-warn
 
       - name: Package
         run: moon package

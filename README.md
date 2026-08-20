@@ -142,6 +142,9 @@ GitHub Actions is configured in `.github/workflows/ci.yml` and runs:
 - `moon check --target all --deny-warn`
 - `moon build`
 - `moon test --deny-warn`
+- `moon test --target wasm --deny-warn`
+- `moon test --target wasm-gc --deny-warn`
+- `moon test --target js --deny-warn`
 - `moon package`
 - `moon run cmd/main`
 
@@ -151,7 +154,8 @@ contents and does not publish packages automatically.
 
 Project records are kept in `docs/`: see `API.md`, `DESIGN.md`,
 `TEST_RECORD.md`, `RELEASE.md`, `AI_ASSISTANCE.md`, and
-`ACCEPTANCE_CHECKLIST.md`.
+`ACCEPTANCE_CHECKLIST.md`. Contributor workflow is documented in
+`CONTRIBUTING.md`.
 
 ## Mooncakes
 

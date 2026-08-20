@@ -17,6 +17,7 @@ authenticated accounts.
 - [x] `moon fmt --check` passes.
 - [x] `moon package` produces a local publish archive.
 - [x] GitHub Actions checks format, check, build, test, package and the example.
+- [x] CI also runs the Wasm, Wasm-GC and JavaScript target tests.
 - [x] The effective MoonBit source scale is 5,836 lines, including 5,550
   production lines and 286 test lines.
 - [x] The root `LICENSE` is MIT and third-party/source notes are documented.

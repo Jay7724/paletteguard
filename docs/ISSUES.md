@@ -35,3 +35,17 @@ Status: planned
 
 Candidate adapters: JSON token files, TOML token files, and static Markdown
 tables.
+
+## PG-6: Cross-target CI coverage
+
+Status: done
+
+Outcome: CI now installs Node.js and runs the test suite for Wasm, Wasm-GC and
+JavaScript targets in addition to the default verification path.
+
+## PG-7: Version tag for the published package
+
+Status: done
+
+Outcome: the repository release is tagged `v0.1.0`, matching the published
+Mooncakes package version.
